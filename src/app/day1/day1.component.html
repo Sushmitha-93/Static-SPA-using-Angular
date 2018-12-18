@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Binding</title>
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>Data Binding</h1>
+    </div>
+
+    <!-- Data binding block-->
+    <div class="container">
+        <div class="info-block">
+            <p>Data binding allows communication between a component and the DOM, making it very easy to define interactive applications without worrying about pushing and pulling data. There are four forms of data binding and they differ in the way the
+                data is flowing -<i>Interpollation, Property Binding, Event Binding, 2-Way Binding</i></p>
+        </div><br><br>
+
+        <!-- Interpollation -->
+        <h4>Interpollation: <span ngNonBindable>{{value}}</span></h4><br>
+
+        <div class="card bg-light">
+            <div class="card-body">
+                <code>
+          &lt;h5&gt;Today's Date: <span ngNonBindable>{{today}}&lt;/h5&gt;</span><br>
+        </code>
+                <br>
+                <h5>Today's Date: {{today}}</h5>
+            </div>
+        </div><br><br>
+        <!-- end of Interpollation-->
+
+        <!-- Property Binding -->
+        <h4>Property Binding: <span ngNonBindable>[property]=”value”</span></h4><br>
+        <p>Binds data to a property of an element. The trick is to put the property onto the element wrapped in square brackets: [property]
+        </p>
+
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <code>
+
+              helloImg: String = "/assets/Hello!!!.png"
+              <pre>
+          |
+          |</pre>
+              &lt;img <span ngNonBindable>[src]='helloImg'</span>&gt;
+            </code>
+                    </div>
+                    <div class="col-md-6">
+                        <img [src]='helloImg' alt="Hello image" height="100px" width="auto">
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <!-- end of Property Binding -->
+
+        <!-- Event Binding-->
+        <h4>Event binding: <span ngNonBindable>(event)=”function”</span></h4>
+        <p>When a specific DOM event happens (eg.: click, change, keyup), call the specified specified method in the component.
+        </p>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <pre><code>{{eventBindingCode}}
+         |
+         |
+&lt;button (click)="sayHello()"&gt;Click me&lt;/button&gt;</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" (click)="sayHello()">Click me</button>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <!-- end of Event Binding-->
+
+        <!-- 2-way Binding -->
+        <h4>2-Way Binding: <span ngNonBindable>[(ngModel)]=”value”</span></h4>
+        <p>Using what’s called the banana in a box syntax, two-way data binding allows to have the data flow both ways.</p>
+        <p>Import FormsModule in app.module</p>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <pre><code>myText: String='Enter Text';
+     |
+     |
+<span ngNonBindable>&lt;input type="text" [(ngModel)]="myText"&gt; {{myText}}</span></code></pre>
+
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" [(ngModel)]="myText"><br>{{myText}}
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <!--end of 2-way Binding -->
+
+        <!-- Counter Example -->
+        <h4>Counter Example:</h4>
+        <p>Using interpollation and event-binding</p>
+
+        <div class="card col-md-4 offset-md-3  text-center">
+            <div class="card-header">
+                <h5>Counter</h5>
+            </div>
+            <div class="card-body">
+                <h5>{{counter}}</h5>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" (click)="increment()">Increment</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary" (click)="decrement()">Decrement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of Counter -->
+
+
+
+
+
+
+
+
+
+    </div>
+    <router-outlet></router-outlet>
+</body>
+
+</html>

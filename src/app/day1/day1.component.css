@@ -1,0 +1,16 @@
+.info-block {
+    border-left: 6px solid #C70039;
+    font-size: 16px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    padding: 0.01em 16px;
+    text-align: justify;
+}
+
+pre {
+    margin-bottom: 0px;
+}
+
+code {
+    color: #e83e8c !important;
+}
