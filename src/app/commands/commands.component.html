@@ -13,6 +13,52 @@
     <div class="jumbotron text-center">
         <h1>Commands</h1>
     </div>
+    <div class="container">
+        <h4>To Install Angular and TypeScript</h4>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <code>> npm install @angular/cli -g</code><br>
+                <code>> npm install typescript -g</code>
+            </div>
+        </div>
+        <br>
+        <h4>To create new Application</h4>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <code>> ng new myAppName</code><br>
+                <code>> cd myAppName</code><br>
+                <code>> ng serve</code>
+                <pre> <code> ng serve --open</code></pre>
+                <pre> <code> ng serve --port 4201</code></pre>
+            </div>
+        </div><br>
+        <h4>To create Component</h4>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <code>> ng g c componentName</code><br>
+                <pre> <code> ng g c componentName -it -is</code></pre>
+            </div>
+        </div><br>
+        <h4>To create Directive</h4>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <code>> ng g d directiveName</code>
+            </div>
+        </div><br>
+        <h4>To run Typescript file</h4>
+        <ol>
+            <li>Tanspile typeScript file (.ts)</li>
+            <li>Run resultant havaScript file (.js)</li>
+        </ol>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <code>> tsc component.ts</code><br>
+                <code>> node component.js</code>
+            </div>
+        </div><br>
+
+
+    </div>
 
     <router-outlet></router-outlet>
 </body>

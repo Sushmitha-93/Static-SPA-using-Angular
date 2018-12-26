@@ -4,3 +4,16 @@
     max-width: 1000px !important;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.info-block {
+    border-left: 6px solid #C70039;
+    font-size: 16px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    padding: 0.01em 16px;
+    text-align: justify;
+}
+
+.blueHeading {
+    color: #303F9F !important;
+}

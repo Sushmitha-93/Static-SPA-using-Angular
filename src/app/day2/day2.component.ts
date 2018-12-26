@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Day2Component implements OnInit {
 
+  superHeros = ["Superman", "Batman", "Wonder woman", "Flash"]; // *ngFor
+
+  num: String='0';
+
   constructor() { }
 
   ngOnInit() {

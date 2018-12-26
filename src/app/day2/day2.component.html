@@ -11,9 +11,109 @@
 <body>
 
     <div class="jumbotron text-center">
-        <h1>Day 2</h1>
+        <h1>Directives</h1>
     </div>
+    <div class="container">
+        <div class="info-block">
+            <p>At the core, a directive is a function that executes whenever the Angular compiler finds it in the DOM. Angular directives are used to extend the power of the HTML by giving it new syntax.</p>
+            <p>There are 3 kinds of directives -</p>
+            <ol>
+                <li>Components - Directives with templates</li>
+                <li>Structural directives—change the DOM layout by adding and removing DOM elements.</li>
+                <li>Attribute directives—change the appearance or behavior of an element, component, or another directive.</li>
+            </ol>
+        </div><br>
 
+        <h4 class="blueHeading">Components</h4>
+        <p>Components are just directives with templates. These form the main class having details of how the component should be processed, instantiated and used at runtime.</p>
+        <br>
+
+        <h4 class="blueHeading">Structural Directives</h4>
+        <p>A structure directive basically deals with manipulating the dom elements. Structural directives have a <b>*</b> sign before the directive. For example, <b>*ngIf</b>, <b>*ngFor</b> and <b>*ngSwitch</b>.</p>
+        <!-- *ngIf -->
+        <h5>*ngIf</h5>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>&lt;button (click)="show=!show"&gt;<span ngNonBindable>{{show?'Hide':'Show'}}&lt;/button&gt;</span>
+            </code><br>
+                        <code>&lt;h4 <span ngNonBindable>*ngIf="show"&gt;Hello&lt;/h4&gt;</span></code>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row">
+                            <button class="btn btn-primary col-md-4" (click)="show=!show">{{show?'Hide':'Show'}}</button>&nbsp;&nbsp;&nbsp;
+                            <h4 *ngIf="show">Hello</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <!-- end of *ngIf -->
+
+        <!-- *ngFor -->
+        <h5>*ngFor</h5>
+        <p>Allows us to build data presentation lists and tables in our HTML templates</p>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>superHeros = ["Superman", "Batman", "Wonder woman", "Flash"];</code><br><br>
+                        <code>&lt;ul&gt;</code><br>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li <span ngNonBindable>*ngFor="let hero of superHeros"&gt;{{hero}}</span>&lt;/li&gt;</code><br>
+                        <code>&lt;ul&gt;</code>
+                    </div>
+                    <div class="col-md-5">
+                        <ul>
+                            <li *ngFor="let hero of superHeros">{{hero}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <!-- end of *ngFor -->
+
+        <!-- *ngSwitch -->
+        <h5>*ngSwitch</h5>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>&lt;input type="text" id="num" <span ngNonBindable>[(ngModel)]="num" &gt;</span></code><br><br>
+                        <code>&lt;div <span ngNonBindable>[ngSwitch]&gt;</span></code><br>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p <span ngNonBindable>*ngSwitchCase="0" style="background-color:
+                red"&gt;Red</span>&lt;p&gt;</code><br>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p <span ngNonBindable>*ngSwitchCase="1" style="background-color:
+                yellow"&gt;Yellow</span>&lt;p&gt;</code><br>
+                        <code>&lt;/div&gt;</code>
+                    </div>
+
+                    <div class="col-md-5 text-center" [ngSwitch]="num">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="num">Enter a number :</label>&nbsp;&nbsp;
+                                <input type="text" class="form-control col-md-2" id="num" [(ngModel)]="num">
+                            </div>
+                        </div><br><br>
+                        <p *ngSwitchCase="0" style="background-color: red">Red</p>
+                        <p *ngSwitchCase="1" style="background-color: yellow">Yello</p>
+                        <p *ngSwitchCase="2" style="background-color: pink">pink</p>
+                        <p *ngSwitchCase="3" style="background-color: turquoise">Turquoise</p>
+                        <p *ngSwitchCase="4" style="background-color: violet">Violet</p>
+                        <p *ngSwitchCase="5" style="background-color: orangered">Orange</p>
+                        <p *ngSwitchCase="6" style="background-color: maroon">Maroon</p>
+                        <p *ngSwitchCase="7" style="background-color: black; color: white">Black</p>
+                        <p *ngSwitchCase="8" style="background-color: purple">Purple</p>
+                        <p *ngSwitchCase="9" style="background-color: lime">Light Green</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of *ngSwitch -->
+
+
+        <br><br>
+    </div>
     <router-outlet></router-outlet>
 </body>
 
