@@ -95,10 +95,10 @@
                                 <input type="text" class="form-control col-md-2" id="num" [(ngModel)]="num">
                             </div>
                         </div><br><br>
-                        <p *ngSwitchCase="0" style="background-color: red">Red</p>
+                        <p *ngSwitchCase="0" style="background-color: turquoise">Turquoise</p>
                         <p *ngSwitchCase="1" style="background-color: yellow">Yello</p>
                         <p *ngSwitchCase="2" style="background-color: pink">pink</p>
-                        <p *ngSwitchCase="3" style="background-color: turquoise">Turquoise</p>
+                        <p *ngSwitchCase="3" style="background-color: red">Red</p>
                         <p *ngSwitchCase="4" style="background-color: violet">Violet</p>
                         <p *ngSwitchCase="5" style="background-color: orangered">Orange</p>
                         <p *ngSwitchCase="6" style="background-color: maroon">Maroon</p>
@@ -108,13 +108,178 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br><br>
         <!-- end of *ngSwitch -->
+
+        <!-- Attribute Directives -->
+        <h4 class="blueHeading">Attribute Directives</h4>
+        <p>They are used to manipulate the appearance and behaviour of elements.</p>
+        <p><b>NgStyle</b> gives you control on individual properties. But if you want to make changes to multiple properties at once, creating a class which bundles those properties and adding the class with <b>NgClass</b> makes more sense.</p><br>
+
+        <!-- [ngStyle] -->
+        <h5>[ngStyle]</h5>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>&lt;p <span ngNonBindable>[ngStyle]="&#123;'background-color': 'yellow'&#125;"</span>&gt;Hello
+              there!&lt;/p&gt;</code>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <p [ngStyle]="{'background-color': 'yellow'}">Hello there!</p>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <p>Mapping style property to a variable</p>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>&lt;p <span ngNonBindable>[ngStyle]="&#123;'background-color': myColor&#125;"</span>&gt;Hello
+              there!&lt;/p&gt;</code>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label for="num">Enter color :</label>&nbsp;&nbsp;<br><br>
+                                <br><input type="text" class="form-control col-md-4" id="myColor" [(ngModel)]="myColor">
+                            </div>
+                        </div>
+                        <p [ngStyle]="{'background-color': myColor}">Hello there!</p>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <p>Mapping the function to style property</p>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>cities: any[] = [&#123; 'city': 'Delhi', 'country': 'India'&#125;, ....];</code><br><br>
+                        <code>getCityColor(city: any) &#123;<br>
+              &nbsp;&nbsp;switch (city) &#123;<br>
+              &nbsp;&nbsp;case 'India': return 'turquoise';<br>
+              &nbsp;&nbsp;case 'USA': return 'red';<br>
+              &nbsp;&nbsp;...... <br>
+              &nbsp;&nbsp;&#125;<br>
+              &#125;</code><br><br>
+                        <code>&lt;ul&gt;</code><br>
+                        <code>&nbsp;&nbsp;&lt;li <span ngNonBindable>*ngFor="let city of cities"</span></code><br>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ngNonBindable>[ngStyle]="&#123;'background-color':getCityColor(city.country)&#125;"</span>></code><br>
+                        <code>&lt;/ul&gt;</code><br>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <ul>
+                            <li *ngFor="let city of cities" [ngStyle]="{'background-color':getCityColor(city.country)}">{{city.city}} ({{city.country}})
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+
+        <!-- Odd/Even Example -->
+        <div class="card bg-light offset-md-3 text-center col-md-4">
+            <div class="card-body">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="num">Enter number :</label>&nbsp;&nbsp;<br><br>
+                        <br><input type="text" class="form-control col-md-4" id="oddOrEvenInput" #oddOrEvenInput (keyup)="oddOrEvenFun(oddOrEvenInput.value)">
+                    </div>
+                </div>
+                <p [ngStyle]="{'background-color': oddOrEvenColor}">{{oddOrEven}}</p>
+            </div>
+        </div><br><br>
+        <!-- End of Odd/Even Example -->
+
+        <!-- end of [ngStyle] -->
+
+        <!-- [ngClass] -->
+        <h5>[ngClass]</h5>
+        <p>The NgClass directive allows you to set the CSS class dynamically for a DOM element.</p><br>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>&lt;ul&gt;</code><br>
+                        <code>&nbsp;&nbsp;&lt;li <span ngNonBindable>*ngFor="let city of cities" </span></code><br>
+                        <code>&nbsp;<span ngNonBindable>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ngClass]="&#123;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text-primary':city.country==='India',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text-danger':city.country==='USA',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text-warning':city.country==='Australia',<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'text-success':city.country==='UK'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;">{{city.city}}
+                ({{city.country}})</span>&lt;/li&gt;</code><br>
+                        <code>&lt;ul&gt;</code>
+                    </div>
+                    <div class="col-md-5">
+                        <ul>
+                            <li *ngFor="let city of cities" [ngClass]="{'text-primary':city.country==='India','text-danger':city.country==='USA','text-warning':city.country==='Australia','text-success':city.country==='UK'}">{{city.city}} ({{city.country}})
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+
+        <!-- Alternative syntax for NgClass -->
+        <p>Alternative sytax</p>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <code>&lt;ul&gt;</code><br>
+                        <code>&nbsp;&nbsp;&lt;li <span ngNonBindable>*ngFor="let city of cities" </span></code><br>
+                        <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span ngNonBindable>[class.text-primary]="city.country==='India'"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.text-danger]="city.country==='USA'"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.text-warning]="city.country==='Australia'"
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[class.text-success]="city.country==='UK'"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{city.city}}
+                ({{city.country}})</span>&lt;/li&gt;</code><br>
+                        <code>&lt;ul&gt;</code>
+                    </div>
+                    <div class="col-md-5">
+                        <ul>
+                            <li *ngFor="let city of cities" [class.text-primary]="city.country==='India'" [class.text-danger]="city.country==='USA'" [class.text-warning]="city.country==='Australia'" [class.text-success]="city.country==='UK'">{{city.city}} ({{city.country}})
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><br><br>
+        <!-- end og Alternative syntax for NgClass -->
+        <!-- end of [ngClass] -->
+
+        <!-- Custom attribute directive -->
+        <h5 class="blueHeading">Custom Attribute Directive</h5><br>
+
+        <p>Create Directive</p>
+        <div class="card bg-dark">
+            <div class="card-body">
+                <code class="text-neon">> ng g d directiveName</code>
+            </div>
+        </div><br>
+
+
+
+        <!-- Custom attribute directive -->
 
 
         <br><br>
     </div>
+    <!--end of Container -->
     <router-outlet></router-outlet>
 </body>
 
 </html>
+
+<!-- TOPIC CARD FORMAT
+    <h5>Sub Heading</h5>
+        <div class="card bg-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
